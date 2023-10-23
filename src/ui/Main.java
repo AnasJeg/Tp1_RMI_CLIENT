@@ -4,6 +4,8 @@
  */
 package ui;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author anace
@@ -13,12 +15,18 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
+    private int internalFrameCount = 0;
     public Main() {
         initComponents();
             this.setTitle("Gestion des machines d'un salle");
         this.setExtendedState(MAXIMIZED_BOTH);
     }
-
+ private void clearDesktopPane() {
+        JInternalFrame[] frames = DesktopPane.getAllFrames();
+        for (JInternalFrame frame : frames) {
+            frame.dispose(); // Close and remove each internal frame
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,6 +44,8 @@ public class Main extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        DesktopPane.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
         DesktopPane.setLayout(DesktopPaneLayout);
@@ -97,7 +107,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       DesktopPane.removeAll();
+       clearDesktopPane();
         MachineUi mf = new MachineUi();
         DesktopPane.add(mf);
         mf.show();
@@ -105,14 +115,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-            DesktopPane.removeAll();
+            clearDesktopPane();
         SalleUi sf = new SalleUi();
            DesktopPane.add(sf);
            sf.show();// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       DesktopPane.removeAll();
+          clearDesktopPane();
         MachinesSalleUi mss=new MachinesSalleUi();
         DesktopPane.add(mss);
         mss.show();
