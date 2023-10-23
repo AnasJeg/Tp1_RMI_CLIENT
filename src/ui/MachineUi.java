@@ -27,14 +27,14 @@ public class MachineUi extends javax.swing.JInternalFrame {
     /**
      * Creates new form MachineUi
      */
-      IDao<Machine> dao;
+      IDao<Machine> machines;
       IDao<Salle> salles;
     DefaultTableModel model;
     private static Long id;
     public MachineUi() {
         initComponents();
          try {
-            dao = (IDao<Machine>) Naming.lookup("rmi://" + Config.url + "/" + "tp1Machines");
+            machines = (IDao<Machine>) Naming.lookup("rmi://" + Config.url + "/" + "tp1Machines");
             salles =  (IDao<Salle>) Naming.lookup("rmi://" + Config.url + "/" + "tp1Salles");
 
             model = (DefaultTableModel) jTable1.getModel();
@@ -53,7 +53,7 @@ public class MachineUi extends javax.swing.JInternalFrame {
     public void loadTable() {
         try {
             model.setRowCount(0);
-            for (Machine m : dao.findAll()) {
+            for (Machine m : machines.findAll()) {
                 model.addRow(new Object[]{
                     m.getId(),
                     m.getRef(),
@@ -300,7 +300,7 @@ public class MachineUi extends javax.swing.JInternalFrame {
             String marque = marqueTxt.getText().toString();
             double prix  = Double.parseDouble(prixTxt.getText().toString());
             Salle salle= (Salle) sallesBox.getSelectedItem();
-           if(dao.create(new Machine(ref, marque, prix, salle))){
+           if(machines.create(new Machine(ref, marque, prix, salle))){
                 refTxt.setText("");
                 marqueTxt.setText("");
                 prixTxt.setText("");
@@ -322,7 +322,7 @@ public class MachineUi extends javax.swing.JInternalFrame {
             double prix  = Double.parseDouble(prixTxt.getText().toString());
             Salle salle= (Salle) sallesBox.getSelectedItem();
         try {
-            if(dao.update(new Machine(id,ref, marque,prix,salle))){
+            if(machines.update(new Machine(id,ref, marque,prix,salle))){
                 refTxt.setText("");
                 marqueTxt.setText("");
                 prixTxt.setText("");
@@ -337,7 +337,7 @@ public class MachineUi extends javax.swing.JInternalFrame {
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
   if(id != 0){
       try {
-          dao.delete(dao.findById(id));
+          machines.delete(machines.findById(id));
           refTxt.setText("");
                 marqueTxt.setText("");
                 prixTxt.setText("");

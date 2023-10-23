@@ -4,6 +4,8 @@
  */
 package DAO;
 
+
+import entities.Salle;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
@@ -22,4 +24,6 @@ public interface IDao<T> extends Remote{
     T findById(Long id) throws RemoteException;
 
     List<T> findAll() throws RemoteException;
+    
+    List<T> findMachinesSalle(Salle o) throws RemoteException;
 }
