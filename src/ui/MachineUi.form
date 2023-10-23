@@ -24,21 +24,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="marqueTxt" max="32767" attributes="0"/>
                   <Component id="refTxt" max="32767" attributes="0"/>
                   <Component id="sallesBox" pref="200" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="183" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
           </Group>
-          <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel3" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="247" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="291" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -62,7 +62,7 @@
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="343" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="385" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -161,7 +161,7 @@
                       <Component id="updateBtn" alignment="0" max="32767" attributes="0"/>
                       <Component id="addBtn" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="90" max="32767" attributes="0"/>
+                  <EmptySpace pref="125" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -227,7 +227,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="815" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -237,7 +237,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="306" max="-2" attributes="0"/>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace pref="69" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

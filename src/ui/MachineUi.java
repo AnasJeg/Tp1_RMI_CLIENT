@@ -184,7 +184,7 @@ public class MachineUi extends javax.swing.JInternalFrame {
                     .addComponent(delBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +239,7 @@ public class MachineUi extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
                 .addGap(29, 29, 29))
         );
         jPanel3Layout.setVerticalGroup(
@@ -247,7 +247,7 @@ public class MachineUi extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -260,13 +260,13 @@ public class MachineUi extends javax.swing.JInternalFrame {
                     .addComponent(marqueTxt)
                     .addComponent(refTxt)
                     .addComponent(sallesBox, 0, 200, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 247, Short.MAX_VALUE)))
+                    .addGap(0, 291, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +284,7 @@ public class MachineUi extends javax.swing.JInternalFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 343, Short.MAX_VALUE)))
+                    .addGap(0, 385, Short.MAX_VALUE)))
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("Informations machines");
@@ -301,6 +301,10 @@ public class MachineUi extends javax.swing.JInternalFrame {
             double prix  = Double.parseDouble(prixTxt.getText().toString());
             Salle salle= (Salle) sallesBox.getSelectedItem();
            if(dao.create(new Machine(ref, marque, prix, salle))){
+                refTxt.setText("");
+                marqueTxt.setText("");
+                prixTxt.setText("");
+                sallesBox.getItemAt(0);
                 loadTable();
            }else{
                System.out.println("ui.MachineUi.addBtnActionPerformed() ERR ");
@@ -312,18 +316,18 @@ public class MachineUi extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-     String ref = refTxt.getText().toString();
+       
+        String ref = refTxt.getText().toString();
             String marque = marqueTxt.getText().toString();
             double prix  = Double.parseDouble(prixTxt.getText().toString());
             Salle salle= (Salle) sallesBox.getSelectedItem();
         try {
             if(dao.update(new Machine(id,ref, marque,prix,salle))){
-       
                 refTxt.setText("");
                 marqueTxt.setText("");
                 prixTxt.setText("");
                 sallesBox.getItemAt(0);
-                loadTable();
+                 loadTable();
             }
         } catch (RemoteException ex) {
             Logger.getLogger(MachineUi.class.getName()).log(Level.SEVERE, null, ex);
@@ -332,28 +336,26 @@ public class MachineUi extends javax.swing.JInternalFrame {
 
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
   if(id != 0){
-    
       try {
           dao.delete(dao.findById(id));
+          refTxt.setText("");
+                marqueTxt.setText("");
+                prixTxt.setText("");
+                sallesBox.getItemAt(0);
       } catch (RemoteException ex) {
           Logger.getLogger(MachineUi.class.getName()).log(Level.SEVERE, null, ex);
       }
-                loadTable();
-         
-                             
-            
+                loadTable();  
         }        // TODO add your handling code here:
     }//GEN-LAST:event_delBtnActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO     id = Integer.parseInt(model.getValueAt(listMachines.getSelectedRow(), 0).toString());
-      
+        id = Long.valueOf(model.getValueAt(jTable1.getSelectedRow(), 0).toString());
         refTxt.setText(model.getValueAt(jTable1.getSelectedRow(), 1).toString());
         marqueTxt.setText(model.getValueAt(jTable1.getSelectedRow(), 2).toString());
         prixTxt.setText(model.getValueAt(jTable1.getSelectedRow(), 3).toString());
         sallesBox.setSelectedItem(model.getValueAt(jTable1.getSelectedRow(), 4));
         
-
     }//GEN-LAST:event_jTable1MouseClicked
 
 
